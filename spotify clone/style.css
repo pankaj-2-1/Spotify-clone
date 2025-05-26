@@ -1,0 +1,328 @@
+/* === Root Variables === */
+:root {
+    --primary-green: #1ED760;
+    --primary-green-dark: #15c153;
+    --bg-color: #121212;
+    --nav-bg: rgba(0, 0, 0, 0.85);
+    --text-color-light: #eee;
+    --text-color-dark: #222;
+    --scrollbar-bg: #222;
+    --scrollbar-thumb: var(--primary-green);
+    --scrollbar-thumb-hover: var(--primary-green-dark);
+    --shadow-color: rgba(30, 215, 96, 0.4);
+    --shadow-hover: rgba(30, 215, 96, 0.7);
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* === Base Reset === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, #141414 0%, #1b1b1b 100%);
+    color: var(--text-color-light);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    transition: background-color 0.4s ease;
+}
+
+/* === Navigation Bar === */
+.Navigation_Bar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    background-color: var(--nav-bg);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    backdrop-filter: saturate(180%) blur(8px);
+}
+
+/* Logo */
+#logo {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#logo:hover {
+    transform: scale(1.15) rotate(5deg);
+}
+
+/* Brand */
+#brand {
+    color: #fff;
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    cursor: default;
+    user-select: none;
+    text-shadow: 0 0 8px var(--primary-green);
+}
+
+/* Navigation Links */
+.Bar {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-left: 40px;
+    padding: 0 25px;
+    height: 60px;
+    background: #0d0d0d;
+    color: #b9f6ca;
+    list-style: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px var(--shadow-color);
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.Bar:hover {
+    background-color: #151515;
+    box-shadow: 0 6px 30px var(--shadow-hover);
+}
+
+#home, #About {
+    position: relative;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding-left: 25px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#home:hover,
+#About:hover {
+    color: var(--primary-green);
+}
+
+#home::after,
+#About::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 0;
+    height: 3px;
+    background-color: var(--primary-green);
+    border-radius: 3px;
+    transition: width 0.4s ease;
+}
+
+#home:hover::after,
+#About:hover::after {
+    width: 100%;
+}
+
+/* Login */
+#Login {
+    margin-left: auto;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1888ef;
+    padding: 8px 15px;
+    border-radius: 12px;
+    background-color: rgba(24, 136, 239, 0.1);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+}
+
+#Login:hover {
+    color: #104ecf;
+    background-color: rgba(24, 136, 239, 0.2);
+    transform: scale(1.07);
+}
+
+/* === Main Container === */
+.container {
+    margin: 30px;
+    padding: 30px 25px 40px;
+    height: 85vh;
+    background-color: #181818;
+    color: var(--text-color-light);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    border-radius: 20px;
+    overflow-y: auto;
+    box-shadow: 0 0 30px var(--shadow-color);
+    transition: box-shadow 0.4s ease;
+}
+
+.container:hover {
+    box-shadow: 0 0 45px var(--shadow-hover);
+}
+
+/* === Song List === */
+.songItemContainer {
+    margin-top: 35px;
+    max-height: 65vh;
+    overflow-y: auto;
+    padding-right: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-bg);
+}
+
+.songItemContainer::-webkit-scrollbar {
+    width: 8px;
+    background-color: var(--scrollbar-bg);
+    border-radius: 6px;
+}
+
+.songItemContainer::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.songItemContainer::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover);
+}
+
+.songItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    margin: 14px 0;
+    padding: 0 30px;
+    background-color: #121212;
+    color: var(--text-color-light);
+    font-size: 1.25rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: box-shadow 0.4s ease, transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.songItem:hover {
+    background-color: #1a1a1a;
+    box-shadow: 0 8px 25px var(--shadow-hover);
+    transform: translateY(-5px);
+}
+
+#cover1 {
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 2px 12px rgba(30, 215, 96, 0.4);
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+#cover1:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px var(--primary-green);
+}
+
+.timestamp {
+    margin: 0 25px;
+    font-weight: 700;
+    color: #888;
+    font-feature-settings: "tnum";
+}
+
+.songInfo {
+    position: absolute;
+    left: 10vw;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #ccc;
+}
+
+.songInfo img {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* === Bottom Fixed Bar === */
+.bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15vh;
+    background-color: #0a3a0f;
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.85);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+#myProgressBar {
+    width: 80vw;
+    height: 6px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #333, #111);
+    overflow: hidden;
+    box-shadow: inset 0 1px 4px rgba(255, 255, 255, 0.15);
+}
+
+#myProgressBar::-webkit-progress-value {
+    background-color: var(--primary-green);
+    transition: width 0.4s ease;
+    border-radius: 10px;
+}
+
+#myProgressBar::-moz-progress-bar {
+    background-color: var(--primary-green);
+    border-radius: 10px;
+}
+
+/* === Icons and Controls === */
+.icons {
+    margin-top: 18px;
+    font-size: 1.6rem;
+    color: #d4ccc4;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.25s ease;
+}
+
+.icons:hover {
+    color: var(--primary-green);
+    transform: scale(1.15);
+}
+
+#play {
+    margin: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: var(--primary-green);
+    box-shadow: 0 4px 15px var(--primary-green);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#play:hover {
+    transform: scale(1.15);
+    box-shadow: 0 6px 25px var(--primary-green-dark);
+}
+
+/* === Misc === */
+li {
+    list-style: none;
+}
